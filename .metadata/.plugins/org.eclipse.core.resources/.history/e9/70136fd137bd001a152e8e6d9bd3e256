@@ -1,0 +1,13 @@
+package com.ashokit.models;
+
+import java.util.Date;
+
+public class Contact {
+	private Integer contactId;
+	private String contactName;
+	private String contactEmail;
+	private Long phoneNumber;
+	private Date createdDate;
+	private Date updatedDate;
+	
+}

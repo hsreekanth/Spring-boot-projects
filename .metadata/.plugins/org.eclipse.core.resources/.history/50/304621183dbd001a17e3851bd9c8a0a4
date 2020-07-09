@@ -1,0 +1,32 @@
+package com.ashokit.controllers;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.ashokit.models.Contact;
+import com.ashokit.service.ContactService;
+
+@Controller
+public class ContactInfoController {
+
+	private ContactService contactService;
+	
+	@GetMapping(value= {"/","/loadform"})
+	public String loadForm(Model model) {
+		Contact c=new Contact();
+		model.addAttribute("contact",c);
+		return "contactInfo";
+	}
+	@PostMapping(value="saveContact")
+	public String handleSubmitBtn(@ModelAttribute("contact")Contact contact,Model model) {
+		
+		return "";
+	}
+	
+	public String handlingViewContactsLink(Model model) {
+		return "";
+	}
+}

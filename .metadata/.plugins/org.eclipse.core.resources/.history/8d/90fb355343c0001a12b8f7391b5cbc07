@@ -1,0 +1,80 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="style.css"/>
+<script>// Wait for the DOM to be ready
+$(function hello() {
+	  // Initialize form validation on the registration form.
+	  // It has the name attribute "registration"
+	  $("form[name='contactInfo']").validate({
+	    // Specify validation rules
+	    rules: {
+	      // The key name on the left side is the name attribute
+	      // of an input field. Validation rules are defined
+	      // on the right side
+	    	contactName: "required",
+	     
+	    	contactEmail: {
+	        required: true,
+	        // Specify that email should be validated
+	        // by the built-in "email" rule
+	        contactEmail: true
+	      },
+	      phoneNumber:{
+	    	  required: true,
+	    	  minlenth:10
+	      }
+	     
+	    },
+	    // Specify validation error messages
+	    messages: {
+	    	contactName: "Please enter your name",
+	    	contactEmail: "Please enter a valid email address",
+	    	phoneNumber: "minimun 10 numbers"
+	    },
+	    // Make sure the form is submitted to the destination defined
+	    // in the "action" attribute of the form when valid
+	    submitHandler: function(form) {
+	      form.submit();
+	    }
+	  });
+	});</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+</head>
+<body>
+<h2>save Contact</h2>
+<p><font color="green">${succMsg}</font></p>
+<p><font color="red">${errorMsg}</font></p>
+<form:form action="saveContact" name="contactInfo"
+           modelAttribute="contact" 
+           method="POST">
+  <table>
+     <form:hidden path="contactId"/>
+    <tr>
+       <td>Contact Name:</td>
+       <td><form:input path="contactName"/></td>
+    </tr>
+    <tr>
+       <td>Contact Email:</td>
+       <td><form:input path="contactEmail"/></td>
+    </tr>
+    <tr>
+       <td>Contact Number:</td>
+       <td><form:input path="phoneNumber"/></td>
+    </tr>
+    <tr>
+       <td><input type="reset" value="reset"></td>
+       <td><input type="submit" value="submit" onClick="hello()"></td>
+    </tr>
+  </table>
+
+</form:form>
+<a href="viewContacts1">View All Contacts</a>
+</body>
+</html>
