@@ -1,6 +1,7 @@
 package com.ashokit.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
@@ -38,22 +39,18 @@ public class ContactServiceImpl implements ContactService {
 
 	@Override
 	public Contact getContactById(Integer contactId) {
-		ContactEntity entity = contactRepo.findById(contactId).get();
-		if(entity.getContactId()!=null) {
+		Optional<ContactEntity> entity = contactRepo.findById(contactId);
+		if(entity.isPresent()) {
+			ContactEntity contactEntity = entity.get();
 			Contact c=new Contact();
-			BeanUtils.copyProperties(entity, c);
+			BeanUtils.copyProperties(contactEntity, c);
 			return c;
 		}
 		
 		return null;
 	}
 
-	@Override
-	public boolean updateContact(Contact contact) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
+	
 	@Override
 	public boolean deleteContact(Integer contactId) {
 		if(contactId!=null) {

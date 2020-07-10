@@ -45,7 +45,7 @@ $(document).ready(function() {
               <td>${c.phoneNumber}</td>
               <td>
                  <a href="editContact?cid=${c.contactId}">Edit</a> |
-                 <a href="deleteContact?cid=${c.contactId}" onClick="deleteConfirmation()">Delete</a>
+                 <a href="deleteContact?cid=${c.contactId}" onClick="return deleteConfirmation();">Delete</a>
               </td>
         </tr>
      </c:forEach>
