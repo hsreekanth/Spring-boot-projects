@@ -21,18 +21,14 @@ public class ViewController {
 	    model.addAttribute("contact",c);
 		return "contactInfo";
 	}
-	public String updateContact(Contact contact,Model model) {
-		return "";
-	}
+	
 	
 	@GetMapping("/deleteContact")
 	public String deleteContact(@RequestParam("cid")Integer contactId,Model model) {
 		boolean isDeleted = contactService.deleteContact(contactId);
-		String msg="contact not deleted";
 		if(isDeleted) {
-			 msg="deleted successfully";
+		model.addAttribute("msg", "message deleted succesfully");
 		}
-		model.addAttribute("message",msg);
 		return "redirect:viewContacts1";
 	}
 }

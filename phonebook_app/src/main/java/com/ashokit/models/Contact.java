@@ -9,20 +9,7 @@ public class Contact {
 	private Long phoneNumber;
 	private Date createdDate;
 	private Date updatedDate;
-	public Contact() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public Contact(Integer contactId, String contactName, String contactEmail, Long phoneNumber, Date createdDate,
-			Date updatedDate) {
-		super();
-		this.contactId = contactId;
-		this.contactName = contactName;
-		this.contactEmail = contactEmail;
-		this.phoneNumber = phoneNumber;
-		this.createdDate = createdDate;
-		this.updatedDate = updatedDate;
-	}
+	
 	public Integer getContactId() {
 		return contactId;
 	}

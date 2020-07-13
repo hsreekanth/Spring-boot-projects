@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+ <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -33,22 +33,28 @@
 </head>
 <body>
 <h2>save Contact</h2>
-<p><font color="green">${succMsg}</font></p>
-<p><font color="red">${errorMsg}</font></p>
+<p>${succMsg}</p>
+<p>${errorMsg}</p>
 <form:form action="saveContact" name="registration" id="registration"
            modelAttribute="contact" 
            method="POST">
   <table>
+  <caption>contact table</caption>
      <form:hidden path="contactId"/>
+     
     <tr>
+    <th id="name"></th>
        <td>Contact Name:</td>
        <td><form:input path="contactName"/></td>
     </tr>
     <tr>
+        <th id="name"></th>
+    
        <td>Contact Email:</td>
        <td><form:input path="contactEmail"/></td>
     </tr>
     <tr>
+      <th id="name"></th>
        <td>Contact Number:</td>
        <td><form:input path="phoneNumber"/></td>
     </tr>

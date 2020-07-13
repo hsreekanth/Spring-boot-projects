@@ -29,7 +29,7 @@ public class ContactInfoController {
 	public String handleSubmitBtn(@ModelAttribute("contact")Contact contact,RedirectAttributes attribute) {
 		boolean isSaved = contactService.save(contact);
 		if(isSaved) {
-			Integer contactId = contact.getContactId();
+	
 			attribute.addFlashAttribute("succMsg", "contact Saved");
 		}
 		else {

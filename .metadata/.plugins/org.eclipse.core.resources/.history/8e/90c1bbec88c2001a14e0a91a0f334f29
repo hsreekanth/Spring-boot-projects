@@ -1,0 +1,69 @@
+ <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="style.css"/>
+<script>function submitForm() {
+	var validator = $("#registration").validate({
+		rules : {
+			contactName : "required",
+			contactEmail : "required",
+			contactPhoneNumber : "required",
+		},
+		errorElement : "span",
+		messages : {
+			contactName : " Please Enter your Name",
+			contactEmail : "Please Enter your Email",
+			contactPhoneNumber : " Please Enter your Contact No",
+		}
+	});
+	if (validator.form()) { // validation perform
+		$('form#registration').attr({
+			action : 'saveContact'
+		});
+		$('form#registration').submit();
+	}
+}</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+</head>
+<body>
+<h2>save Contact</h2>
+<p>${succMsg}</p>
+<p>${errorMsg}</p>
+<form:form action="saveContact" name="registration" id="registration"
+           modelAttribute="contact" 
+           method="POST">
+  <table summary="contacttable">
+     <form:hidden path="contactId"/>
+     
+    <tr>
+    <th id="name"></th>
+       <td>Contact Name:</td>
+       <td><form:input path="contactName"/></td>
+    </tr>
+    <tr>
+        <th id="name"></th>
+    
+       <td>Contact Email:</td>
+       <td><form:input path="contactEmail"/></td>
+    </tr>
+    <tr>
+      <th id="name"></th>
+       <td>Contact Number:</td>
+       <td><form:input path="phoneNumber"/></td>
+    </tr>
+    <tr>
+       <td><input type="reset" value="reset"></td>
+       <td><input type="submit" value="submit" onClick="submitForm();"></td>
+    </tr>
+  </table>
+
+</form:form>
+<a href="viewContacts1">View All Contacts</a>
+</body>
+</html>

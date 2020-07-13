@@ -42,12 +42,21 @@ private Date createdDate;
 @Column(name="updated_date", insertable=false)
 private Date updatedDate;
 
-
+public ContactEntity() {
+	
+}
+public ContactEntity(Integer contactId, String contactName, String contactEmail, Long phoneNumber, Date createdDate,
+		Date updatedDate) {
+	super();
+	this.contactId = contactId;
+	this.contactName = contactName;
+	this.contactEmail = contactEmail;
+	this.phoneNumber = phoneNumber;
+	this.createdDate = createdDate;
+	this.updatedDate = updatedDate;
+}
 public Integer getContactId() {
 	return contactId;
-}
-public void setContactId(Integer contactId) {
-	this.contactId = contactId;
 }
 public String getContactName() {
 	return contactName;
@@ -78,6 +87,9 @@ public Date getUpdatedDate() {
 }
 public void setUpdatedDate(Date updatedDate) {
 	this.updatedDate = updatedDate;
+}
+public void setContactId(Integer contactId) {
+	this.contactId = contactId;
 }
 @Override
 public String toString() {
